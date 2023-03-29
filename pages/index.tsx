@@ -1,7 +1,22 @@
+import Accordion from "@/components/Accordion";
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const arrayProblems = [
+    {
+      title: "Contains Duplicate",
+      url: "https://leetcode.com/problems/contains-duplicate/",
+    },
+    {
+      title: "Valid Anagram",
+      url: "https://leetcode.com/problems/valid-anagram/",
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -17,7 +32,8 @@ export default function Home() {
 
         <div>
           <ul>
-            <li>Arrays & Hashing</li>
+            <li>Arrays</li>
+            <Accordion items={arrayProblems} />
           </ul>
         </div>
       </main>
