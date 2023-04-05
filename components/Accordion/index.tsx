@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+interface Problem {
+  title: string;
+  url?: string; // make url optional
+}
+
 interface Tab {
   title: string;
   content: string;
-  smallTitles: string[];
+  problems: (string | { title: string; url: string })[];
 }
 
 interface AccordionProps {
@@ -83,10 +88,16 @@ const Accordion: React.FC<AccordionProps> = ({ tabs }) => {
         (tab, index) =>
           activeIndex === index && (
             <AccordionContent key={index}>
-              {tab.smallTitles.map((smallTitle, i) => (
-                <SmallTitle key={i}>{smallTitle}</SmallTitle>
-              ))}
               <p>{tab.content}</p>
+              {tab.problems.map((problem, i) => (
+                <SmallTitle key={i}>
+                  {typeof problem === "string" ? (
+                    problem
+                  ) : (
+                    <a href={problem.url}>{problem.title}</a>
+                  )}
+                </SmallTitle>
+              ))}
             </AccordionContent>
           )
       )}

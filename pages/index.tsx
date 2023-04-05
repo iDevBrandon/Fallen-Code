@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Accordion from "../components/Accordion";
 import Header from "@/components/Header";
+import { Algorithms, DataStructures } from "./dba";
 
 const Container = styled.div`
   display: grid;
@@ -24,62 +25,68 @@ const SectionTitle = styled.h2`
   margin-bottom: 16px;
 `;
 
-const DataStructures = [
-  {
-    title: "Array",
-    smallTitles: ["Definition", "Operations"],
-    content: "This is the content of Array",
-  },
-  {
-    title: "Linked List",
-    smallTitles: ["Definition", "Operations"],
-    content: "This is the content of Linked List",
-  },
-  {
-    title: "Queue",
-    smallTitles: ["Definition", "Operations"],
-    content: "This is the content of Queue",
-  },
-  {
-    title: "Linked List",
-    smallTitles: ["Definition", "Operations"],
-    content: "This is the content of Linked List",
-  },
-  {
-    title: "Queue",
-    smallTitles: ["Definition", "Operations"],
-    content: "This is the content of Queue",
-  },
-];
+// const DataStructures = [
+//   {
+//     title: "Array & Hashing",
+//     content: "",
+//     problems: [
+//       { title: "Contains Duplicate", url: "https://example.com/2" },
+//       { title: "Valid Anagram", url: "https://example.com/5" },
+//     ],
+//   },
+//   {
+//     title: "Linked List",
+//     content: "",
+//     problems: [
+//       { title: "Contains Duplicate", url: "https://example.com/56" },
+//       { title: "Valid Anagram", url: "https://example.com/3" },
+//     ],
+//   },
+//   {
+//     title: "Queue",
+//     problems: ["Definition", "Operations"],
+//     content: "This is the content of Queue",
+//   },
+//   {
+//     title: "Linked List",
+//     problems: ["Definition", "Operations"],
+//     content: "This is the content of Linked List",
+//   },
+//   {
+//     title: "Queue",
+//     problems: ["Definition", "Operations"],
+//     content: "This is the content of Queue",
+//   },
+// ];
 
-const Algorithms = [
-  {
-    title: "Binary Search",
-    smallTitles: ["Definition", "Algorithm"],
-    content: "This is the content of Binary Search",
-  },
-  {
-    title: "Merge Sort",
-    smallTitles: ["Definition", "Algorithm"],
-    content: "This is the content of Merge Sort",
-  },
-  {
-    title: "Quick Sort",
-    smallTitles: ["Definition", "Algorithm"],
-    content: "This is the content of Quick Sort",
-  },
+// const Algorithms = [
+//   {
+//     title: "Recursionh",
+//     problems: ["Definition", "Algorithm"],
+//     content: "This is the content of Binary Search",
+//   },
+//   {
+//     title: "Merge Sort",
+//     problems: ["Definition", "Algorithm"],
+//     content: "This is the content of Merge Sort",
+//   },
+//   {
+//     title: "Quick Sort",
+//     problems: ["Definition", "Algorithm"],
+//     content: "This is the content of Quick Sort",
+//   },
 
-  {
-    title: "Merge Sort",
-    smallTitles: ["Definition", "Algorithm"],
-    content: "This is the content of Merge Sort",
-  },
-  {
-    title: "Quick Sort",
-    smallTitles: ["Definition", "Algorithm"],
-    content: "This is the content of Quick Sort",
-  },
-];
+//   {
+//     title: "Merge Sort",
+//     problems: ["Definition", "Algorithm"],
+//     content: "This is the content of Merge Sort",
+//   },
+//   {
+//     title: "Quick Sort",
+//     problems: ["Definition", "Algorithm"],
+//     content: "This is the content of Quick Sort",
+//   },
+// ];
 
 const App = () => {
   return (
