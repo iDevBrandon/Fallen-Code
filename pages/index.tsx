@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Accordion from "../components/Accordion";
 import Header from "@/components/Header";
-import { Algorithms, DataStructures } from "./dba";
+import { Algorithms, DataStructures } from "../lib/Data";
 
 const Container = styled.div`
   display: grid;
