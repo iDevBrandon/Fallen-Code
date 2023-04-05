@@ -6,8 +6,15 @@ export const DataStructures = [
       {
         title: "Contains Duplicate",
         url: "https://leetcode.com/problems/contains-duplicate/",
+        video: "https://www.youtube.com/watch?v=abcd1234",
+        blog: "https://example.com/blog/contains-duplicate",
       },
-      { title: "Valid Anagram", url: "https://example.com/5" },
+      {
+        title: "Valid Anagram",
+        url: "https://example.com/5",
+        video: "https://www.youtube.com/watch?v=abcd1234",
+        blog: "https://example.com/blog/contains-duplicate",
+      },
     ],
   },
   {

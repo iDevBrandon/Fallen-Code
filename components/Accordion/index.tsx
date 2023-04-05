@@ -9,7 +9,10 @@ interface Problem {
 interface Tab {
   title: string;
   content: string;
-  problems: (string | { title: string; url: string })[];
+  problems: (
+    | string
+    | { title: string; url: string; video?: string; blog?: string }
+  )[];
 }
 
 interface AccordionProps {
@@ -53,10 +56,12 @@ const AccordionTitle = styled.div`
   font-weight: bold;
 `;
 
-const SmallTitle = styled.div`
+const AccordionProblem = styled.div`
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 8px;
+  justify-content: space-between;
+  display: flex;
 `;
 
 const AccordionContent = styled.div`
@@ -90,13 +95,33 @@ const Accordion: React.FC<AccordionProps> = ({ tabs }) => {
             <AccordionContent key={index}>
               <p>{tab.content}</p>
               {tab.problems.map((problem, i) => (
-                <SmallTitle key={i}>
+                <AccordionProblem key={i}>
                   {typeof problem === "string" ? (
                     problem
                   ) : (
-                    <a href={problem.url}>{problem.title}</a>
+                    <>
+                      <a href={problem.url}>{problem.title}</a>
+                      {problem.video && (
+                        <a
+                          href={problem.video}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <span> (video)</span>
+                        </a>
+                      )}
+                      {problem.blog && (
+                        <a
+                          href={problem.blog}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <span> (blog)</span>
+                        </a>
+                      )}
+                    </>
                   )}
-                </SmallTitle>
+                </AccordionProblem>
               ))}
             </AccordionContent>
           )
