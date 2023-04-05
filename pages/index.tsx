@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Accordion from "../components/Accordion";
 import Header from "@/components/Header";
-import { Algorithms, DataStructures } from "../lib/Data";
+import { Algorithms, DataStructures, Implementation } from "../lib/Data";
 
 const Container = styled.div`
   display: grid;
@@ -37,6 +37,10 @@ const App = () => {
         <Section>
           <SectionTitle>Algorithms</SectionTitle>
           <Accordion tabs={Algorithms} />
+        </Section>
+        <Section>
+          <SectionTitle>Implementation</SectionTitle>
+          <Accordion tabs={Implementation} />
         </Section>
       </Container>
     </div>

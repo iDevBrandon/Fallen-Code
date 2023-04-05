@@ -70,3 +70,18 @@ export const Algorithms = [
     content: "This is the content of Quick Sort",
   },
 ];
+
+export const Implementation = [
+  {
+    title: "Implementation",
+    content: "",
+    problems: [
+      {
+        title: "Count",
+        url: "https://www.acmicpc.net/problem/10807",
+        video: "https://www.youtube.com/@idevbrandon",
+        blog: "https://idevbrandon.medium.com/",
+      },
+    ],
+  },
+];
