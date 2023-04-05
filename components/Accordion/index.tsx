@@ -1,38 +1,97 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
-type PropsType = {
-  items: Array<{ title: string; url: string }>;
-};
+interface Tab {
+  title: string;
+  content: string;
+  smallTitles: string[];
+}
 
-function Accordion({ items }: PropsType) {
-  const [isOpen, setIsOpen] = useState(true);
+interface AccordionProps {
+  tabs: Tab[];
+}
 
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
+const AccordionContainer = styled.div`
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
+const AccordionTabs = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+const AccordionTab = styled.div<{ active: boolean }>`
+  flex-basis: calc(33.33% - 8px);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+
+  ${({ active }) =>
+    active &&
+    `
+    border-color: #0077cc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  `}
+`;
+
+const AccordionTitle = styled.div`
+  padding: 12px;
+  font-weight: bold;
+`;
+
+const SmallTitle = styled.div`
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+`;
+
+const AccordionContent = styled.div`
+  padding: 12px;
+  border-top: 1px solid #ccc;
+`;
+
+const Accordion: React.FC<AccordionProps> = ({ tabs }) => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const toggleAccordion = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
-    <div className="accordion">
-      <div className="accordion-header" onClick={toggleAccordion}>
-        {isOpen ? (
-          <i className="fas fa-chevron-up"></i>
-        ) : (
-          <i className="fas fa-chevron-down"></i>
-        )}
-      </div>
-      {isOpen && (
-        <div className="accordion-content">
-          <ul>
-            {items.map((item, index) => (
-              <li key={index}>
-                <a href={item.url}>{item.title}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <AccordionContainer>
+      <AccordionTabs>
+        {tabs.map((tab, index) => (
+          <AccordionTab
+            key={index}
+            active={activeIndex === index}
+            onClick={() => toggleAccordion(index)}
+          >
+            <AccordionTitle>{tab.title}</AccordionTitle>
+          </AccordionTab>
+        ))}
+      </AccordionTabs>
+      {tabs.map(
+        (tab, index) =>
+          activeIndex === index && (
+            <AccordionContent key={index}>
+              {tab.smallTitles.map((smallTitle, i) => (
+                <SmallTitle key={i}>{smallTitle}</SmallTitle>
+              ))}
+              <p>{tab.content}</p>
+            </AccordionContent>
+          )
       )}
-    </div>
+    </AccordionContainer>
   );
-}
+};
 
 export default Accordion;
