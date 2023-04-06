@@ -31,6 +31,15 @@ const App = () => {
       <Header />
       <Container>
         <Section>
+          <SectionTitle>{`Today's random problems`}</SectionTitle>
+          <div>
+            <p>Problem 1</p>
+            <p>Problem 2</p>
+            <p>Problem 3</p>
+            <p>Problem 4</p>
+          </div>
+        </Section>
+        <Section>
           <SectionTitle>Data Structures</SectionTitle>
           <Accordion tabs={DataStructures} />
         </Section>
