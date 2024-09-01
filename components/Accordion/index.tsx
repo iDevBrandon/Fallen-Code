@@ -1,5 +1,6 @@
+"use client";
+
 import React, { useState } from "react";
-import styled from "styled-components";
 
 interface Problem {
   title: string;
@@ -19,56 +20,6 @@ interface AccordionProps {
   tabs: Tab[];
 }
 
-const AccordionContainer = styled.div`
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-`;
-
-const AccordionTabs = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
-const AccordionTab = styled.div<{ active: boolean }>`
-  flex-basis: calc(33.33% - 8px);
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background-color: #f5f5f5;
-  }
-
-  ${({ active }) =>
-    active &&
-    `
-    border-color: #0077cc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  `}
-`;
-
-const AccordionTitle = styled.div`
-  padding: 12px;
-  font-weight: bold;
-`;
-
-const AccordionProblem = styled.div`
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 8px;
-  justify-content: space-between;
-  display: flex;
-`;
-
-const AccordionContent = styled.div`
-  padding: 12px;
-  border-top: 1px solid #ccc;
-`;
-
 const Accordion: React.FC<AccordionProps> = ({ tabs }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
@@ -77,35 +28,48 @@ const Accordion: React.FC<AccordionProps> = ({ tabs }) => {
   };
 
   return (
-    <AccordionContainer>
-      <AccordionTabs>
+    <div className="w-full max-w-2xl mx-auto">
+      <div className="flex flex-wrap justify-between">
         {tabs.map((tab, index) => (
-          <AccordionTab
+          <div
             key={index}
-            active={activeIndex === index}
+            className={`flex-basis-[calc(33.33%-8px)] border rounded mb-2 cursor-pointer transition-all ease-in-out ${
+              activeIndex === index
+                ? "border-blue-500 shadow-md"
+                : "border-gray-300"
+            }`}
             onClick={() => toggleAccordion(index)}
           >
-            <AccordionTitle>{tab.title}</AccordionTitle>
-          </AccordionTab>
+            <div className="p-3 font-bold">{tab.title}</div>
+          </div>
         ))}
-      </AccordionTabs>
+      </div>
       {tabs.map(
         (tab, index) =>
           activeIndex === index && (
-            <AccordionContent key={index}>
+            <div key={index} className="p-3 border-t border-gray-300 bg-white">
               <p>{tab.content}</p>
               {tab.problems.map((problem, i) => (
-                <AccordionProblem key={i}>
+                <div
+                  key={i}
+                  className="text-sm font-bold mb-2 flex justify-between"
+                >
                   {typeof problem === "string" ? (
                     problem
                   ) : (
                     <>
-                      <a href={problem.url}>{problem.title}</a>
+                      <a
+                        href={problem.url}
+                        className="text-blue-500 hover:underline"
+                      >
+                        {problem.title}
+                      </a>
                       {problem.video && (
                         <a
                           href={problem.video}
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="text-blue-500 hover:underline"
                         >
                           <span> (video)</span>
                         </a>
@@ -115,18 +79,19 @@ const Accordion: React.FC<AccordionProps> = ({ tabs }) => {
                           href={problem.blog}
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="text-blue-500 hover:underline"
                         >
                           <span> (blog)</span>
                         </a>
                       )}
                     </>
                   )}
-                </AccordionProblem>
+                </div>
               ))}
-            </AccordionContent>
+            </div>
           )
       )}
-    </AccordionContainer>
+    </div>
   );
 };
 
