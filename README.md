@@ -3,8 +3,10 @@
 ## Reference
 
 [Neetcode](https://neetcode.io/)
+[How Neetcode made](https://www.linkedin.com/posts/activity-7236372298390233088-JW8o?utm_source=share&utm_medium=member_desktop)
 [fc](https://fastcampus.co.kr/dev_online_upjscodingtest)
 [solut](https://www.solut.kr/levels)
+[algodale](https://www.algodale.com/)
 
 ## I/O
 
